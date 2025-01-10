@@ -698,3 +698,21 @@ function __setprompt
 
 }
 PROMPT_COMMAND='__setprompt'
+
+alias gs="git status"
+alias gd="git diff"
+export GIT_EDITOR="vim"
+fixssh() {
+	        eval $(tmux show-env -s |grep '^SSH_')
+	}
+
+# pnpm
+export PNPM_HOME="/home/wayve-agent/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export PATH="$PATH:/home/wayve-agent/.local/bin"
+
+source /workspace/.bashrc_pvc
